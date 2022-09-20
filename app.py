@@ -16,7 +16,7 @@ segment_df = df.loc[df['Intake Type'] == intake]
 
 type_counts = segment_df['Animal Type'].value_counts(normalize=True)
 
-st.dataframe(sement_df)
+st.dataframe(segment_df)
 
 # Version 1
 fig, ax = plt.subplots()
