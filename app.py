@@ -2,28 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.write("# SUP")
+st.write("# Adoption Prediction for Austin Animal Center")
 
-st.write("## Level Two Header")
+st.write("## Describe the new intake:")
 
-st.write(("_italic text_"))
+col_names = ['Color_black', 'Fixed', 'Type_Cat', 'Type_Dog', 'Intake Condition_Not Normal', 'Female', 'Young']
 
-df = pd.read_csv("data/Austin_Animal_Center_intakes-091922.csv")
+color = st.checkbox(label="Is the animal black?")
 
-intake = st.radio(label="What intake type?", options=df['Intake Type'].unique())
-
-segment_df = df.loc[df['Intake Type'] == intake]
-
-type_counts = segment_df['Animal Type'].value_counts(normalize=True)
-
-st.dataframe(segment_df)
-
-# Version 1
-fig, ax = plt.subplots()
-
-ax.bar(x=type_counts.index, height=type_counts)
-
-st.pyplot(fig)
-
-# Version 2
-st.bar_chart(type_counts)
+st.write(color)
