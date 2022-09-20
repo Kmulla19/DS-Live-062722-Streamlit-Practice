@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import pickle
 
 st.write("# Adoption Prediction for Austin Animal Center")
 
@@ -32,5 +33,9 @@ young = st.checkbox(label="Is the animal young?")
 
 input_row = [color, fixed, cat_type, dog_type, condition, female, young]
 
-input = pd.DataFrame(dict(zip(used_cols, input_row)), index=[0])
+input = pd.DataFrame(dict(zip(col_names, input_row)), index=[0])
 st.write(input)
+
+loaded_model = pickle.load(open("rf_model.sav", 'rb'))
+
+st.write(loaded_model.predict(input))
